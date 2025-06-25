@@ -1,7 +1,6 @@
 from sklearn.linear_model import LinearRegression
 from sklearn.model_selection import train_test_split
 import pandas as pd
-import numpy as np
 
 # Input features
 X = [ [50, 70, 80], 
@@ -19,7 +18,7 @@ X = [ [50, 70, 80],
       [20, 16, 12]]  
 # Target values
 y = [65, 40, 98, 92, 70, 85, 90, 100, 75, 88, 60, 15, 60] 
-# Split the data into training and testing sets
+# Split the data into training and testing sets. NOTE I don't know what this means
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.5, random_state=42) # test size of 0.5 and 7 give the same result
 # Create and fit the linear regression model
 model = LinearRegression()
@@ -31,14 +30,17 @@ print("Intercept:", model.intercept_)
 predictions = model.predict(X_test)
 print("Predictions:", predictions)
 print("Actual values:", y_test)
+print('--------------------------------------------------------------------------------------------------------------------------------------------------------------')
 
+# Working on the data.csv dataset
 df = pd.read_csv('data.csv')
 # print('\n', df)
 
 x = df[['StudyHours', 'Attendance', 'ProjectsCompleted', 'InternshipMonths']] #[[]] If we're making it an array
 y = df['GPA']
 
-model = LinearRegression()
+# Creating the model
+model = LinearRegression() # The first model variable is overwritten
 model.fit(x, y) # Features
 
 # For one individual student
@@ -64,7 +66,7 @@ df3_dropGPA = df3.drop(columns= 'GPA')
 print('\n', df3_dropGPA.head())
 
 # Find the predicted GPAs
-predicted_GPAs = model.predict(df3_dropGPA)[10] #NOTE [87] is the 87th value in the total number of predictions
+predicted_GPAs = model.predict(df3_dropGPA)[87] #NOTE [87] is the 87th value in the total number of predictions. It's amazing that it works so simply
 print(f'Predicted GPA for one of the extrapolated students: {predicted_GPAs:.2f}')
 
 # Put these GPA's into one df column and merge with the extrapolated df
