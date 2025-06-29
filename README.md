@@ -37,8 +37,8 @@ command to run if program contains helper info
 
 Contributors names and contact info
 
-ex. Sesethu Bango 
-ex. bsesethu@yahoo.com
+Sesethu Bango 
+bsesethu@yahoo.com
 
 ## Version History
 
