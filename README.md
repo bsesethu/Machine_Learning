@@ -4,8 +4,7 @@ My first foray into model development. Trying to optimise it so it predicts more
 
 ## Description
 
-There are three modules present in this repository. Two of which are Zaio Live sessions, the other is focused on the development of a model created from the dataset in the 'test_energy_data' and 'train_energy_data'
-files. 
+There are three modules present in this repository. Two of which are Zaio Live sessions, the other, energy_consumption.py is focused on the development of a model. This model is created from the dataset in the 'test_energy_data.csv' and 'train_energy_data.csv' files. 
 
 ## Getting Started
 
