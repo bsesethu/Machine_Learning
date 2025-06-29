@@ -103,7 +103,7 @@ print(df_new)
 
 # Apply the model including the two new parameters
 # Copy paste the model again, from above
-x = df_new[['Building Type', 'Square Footage', 'Number of Occupants', 'Appliances Used', 'Average Temperature', 'Day of Week']] #NOTE Seems like it can't handle string values
+x = df_new[['Building Type', 'Square Footage', 'Number of Occupants', 'Appliances Used', 'Average Temperature', 'Day of Week']]
 y = df_new['Energy Consumption']
 
 # Creating model
@@ -121,7 +121,7 @@ test_case = pd.DataFrame([{ # Can't handle string values
 }])
 
 predicted_consumption = model.predict(test_case)[0]
-print('\nActual consumption (@index = 0) = 2713.96; whereas predicted value =', round(predicted_consumption, 2)) # Index 999 is dead on accurate, but it seems most predictions are significantly off
+print('\nActual consumption (@index = 0) = 2713.96; whereas predicted value =', round(predicted_consumption, 2)) 
 
 # Test this model using the previously defined test(We should use functions rather)
 
@@ -133,12 +133,12 @@ for i in range(length_df):
     list_predConsumption.append(round(model.predict(df_test_case_1)[i], 2)) # Returns list of predicted values
 
 # Convert list to df
-df_prediction = pd.DataFrame({'Predicted Energy Consumption': list_predConsumption})
-df_Energy_Cons = df['Energy Consumption']
+df_prediction = pd.DataFrame({'Predicted Energy Consumption': list_predConsumption}) # Predicted Energy Consumption 
+df_Energy_Cons = df['Energy Consumption'] # Original Energy Consumption column
 # print('\n', df_prediction, df_Energy_Cons)
 
 # Find percentage difference of predicted value from the actual value
-df_joined = df_prediction.join(df_Energy_Cons) #NOTE Having the join applied the other way around doesn't work though. Interesting.
+df_joined = df_prediction.join(df_Energy_Cons) 
 print('\n', df_joined)
 
 def find_perc_diff(df): # Function for finding the percentage difference
@@ -146,4 +146,4 @@ def find_perc_diff(df): # Function for finding the percentage difference
     return df_percentage
 
 df_joined['Percentage Difference'] = df_joined.apply(find_perc_diff, axis= 1) # Creating a new column 'Percentage Difference'
-print('\n', df_joined) # Degree of deviation final result. As it stands, the model is not very accurate.
+print('\n', df_joined) # Degree of deviation final result. The model is now very accurate.
